@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form</title>
+  <script>
+    // Function to populate the courses based on the selected department
+    function populateCourses() {
+      var department = document.getElementById("department").value;
+      var courseSelect = document.getElementById("course");
+      courseSelect.innerHTML = "";
+
+      if (department === "commerce") {
+        var courses = ["BBA", "BCom", "MCom"];
+      } else if (department === "science") {
+        var courses = ["BSc", "MSc", "PhD"];
+      } else if (department === "arts") {
+        var courses = ["BA", "MA", "PhD"];
+      }
+
+      for (var i = 0; i < courses.length; i++) {
+        var option = document.createElement("option");
+        option.value = courses[i];
+        option.text = courses[i];
+        courseSelect.appendChild(option);
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Form</h1>
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" required><br>
+
+    <label for="dob">DOB:</label>
+    <input type="date" id="dob" required><br>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" required><br>
+
+    <label for="gender">Gender:</label>
+    <input type="text" id="gender" required><br>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required><br>
+
+    <label for="address">Address:</label>
+    <textarea id="address" required></textarea><br>
+
+    <label for="department">Department:</label>
+    <select id="department" onchange="populateCourses()" required>
+      <option value="">Select Department</option>
+      <option value="commerce">Commerce</option>
+      <option value="science">Science</option>
+      <option value="arts">Arts</option>
+    </select><br>
+
+    <label for="course">Course:</label>
+    <select id="course" required>
+      <option value="">Select Course</option>
+    </select><br>
+
+    <label for="purpose">Purpose:</label>
+    <select id="purpose" required>
+      <option value="">Select Purpose</option>
+      <option value="enquiry">Enquiry</option>
+      <option value="place_order">Place Order</option>
+      <option value="return">Return</option>
+    </select><br>
+
+    <label for="materials">Materials Provided:</label><br>
+    <input type="checkbox" id="debit_notebook" name="materials" value="debit_notebook">
+    <label for="debit_notebook">Debit Note Book</label><br>
+    <input type="checkbox" id="pen" name="materials" value="pen">
+    <label for="pen">Pen</label><br>
+    <input type="checkbox" id="exam_papers" name="materials" value="exam_papers">
+    <label for="exam_papers">Exam Papers</label><br>
+
+    <input type="submit" value="Submit">
+  </form>
+  <p id="message"></p>
+  <a href="#">Return to Home Page</a>
+</body>
+</html>

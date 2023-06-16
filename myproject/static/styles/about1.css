@@ -1,0 +1,24 @@
+/* Other existing CSS rules */
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown li {
+  padding: 5px 0;
+}
+
+.dropdown li a {
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown li a:hover {
+  color: #ff6b6b;
+}

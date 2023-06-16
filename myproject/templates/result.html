@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .blue-button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .form-container {
+            display: none;
+        }
+    </style>
+    <script>
+        function showForm() {
+            var form = document.getElementById("myForm");
+            form.style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome</h1>
+    <button class="blue-button" onclick="showForm()">Click me</button>
+
+    <div class="form-container" id="myForm">
+        <h2>Form</h2>
+<!--        <form>-->
+<!--            <label for="name">Name:</label>-->
+<!--            <input type="text" id="name" name="name" required><br><br>-->
+
+<!--            <label for="age">Age:</label>-->
+<!--            <input type="number" id="age" name="age" required><br><br>-->
+
+<!--            <label for="height">Height:</label>-->
+<!--            <input type="number" id="height" name="height" required><br><br>-->
+
+<!--            <label for="gender">Gender:</label>-->
+<!--            <input type="text" id="gender" name="gender" required><br><br>-->
+
+<!--            <input type="submit" value="Submit">-->
+<!--        </form>-->
+<!--<form action="new" method="post">-->
+<!--        {% csrf_token %}-->
+<!--        <input type="text" name="Name" placeholder="Enter your name"><br>-->
+<!--        <input type="date" name="DOB" placeholder="Date of birth"><br>-->
+<!--        <input type="number" name="Age" placeholder="Enter your Age"><br>-->
+<!--        <label for="gender">Gender:</label>-->
+<!--        <select id="gender" name="gender" required>-->
+<!--        <option value="male">Male</option>-->
+<!--        <option value="female">Female</option>-->
+<!--        </select>-->
+<!--        <br>-->
+<!--        <input type="email" name="email" placeholder="Enter your email"><br>-->
+<!--        <input type="password" name="password" placeholder="Enter your password"><br>-->
+<!--        <input type="password" name="password2" placeholder="Confirm your password"><br>-->
+<!--        <input type="submit" value="Submit">-->
+<!--    </form>-->
+        <!-- login.html -->
+
+<form method="POST">
+  {% csrf_token %}
+
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+  <br>
+
+  <label for="dob">Date of Birth:</label>
+  <input type="date" id="dob" name="dob" required>
+  <br>
+
+  <label for="age">Age:</label>
+  <input type="number" id="age" name="age" required>
+  <br>
+
+  <label for="gender">Gender:</label>
+  <select id="gender" name="gender" required>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+  </select>
+  <br>
+
+  <label for="phone">Phone Number:</label>
+  <input type="tel" id="phone" name="phone" required>
+  <br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+  <br>
+
+  <label for="address">Address:</label>
+  <textarea id="address" name="address" required></textarea>
+  <br>
+
+  <label for="department">Department:</label>
+  <select id="department" name="department" required>
+    <option value="commerce">Commerce</option>
+    <option value="science">Science</option>
+    <option value="arts">Arts</option>
+  </select>
+  <br>
+
+  <label for="course">Course:</label>
+  <select id="course" name="course" required>
+    <!-- Options for Commerce Department -->
+    <optgroup label="Commerce">
+      <option value="bba">BBA</option>
+      <option value="bcom">BCom</option>
+    </optgroup>
+    <!-- Options for Science Department -->
+    <optgroup label="Science">
+      <option value="bsc">BSc</option>
+      <option value="engineering">Engineering</option>
+    </optgroup>
+    <!-- Options for Arts Department -->
+    <optgroup label="Arts">
+      <option value="ba">BA</option>
+      <option value="ma">MA</option>
+    </optgroup>
+  </select>
+  <br>
+
+  <label for="purpose">Purpose:</label>
+  <select id="purpose" name="purpose" required>
+    <option value="enquiry">Enquiry</option>
+    <option value="place_order">Place Order</option>
+    <option value="return">Return</option>
+  </select>
+  <br>
+
+  <label>Materials Provided:</label><br>
+  <input type="checkbox" id="notebook" name="materials" value="notebook">
+  <label for="notebook">Debit Note Book</label><br>
+  <input type="checkbox" id="pen" name="materials" value="pen">
+  <label for="pen">Pen</label><br>
+  <input type="checkbox" id="exam_papers" name="materials" value="exam_papers">
+  <label for="exam_papers">Exam Papers</label><br>
+  <!-- Add more checkboxes for other materials -->
+
+  <br>
+  <input type="submit" value="Submit">
+</form>
+
+<!-- Display message and return link after submission -->
+{% if message %}
+  <p>{{ message }}</p>
+{% endif %}
+
+
+
+
+    </div>
+</body>
+</html>

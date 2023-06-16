@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .blue-button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .form-container {
+            display: none;
+        }
+    </style>
+    <script>
+        function showForm() {
+            var form = document.getElementById("myForm");
+            form.style.display = "block";
+        }
+    </script>
+    <script>
+    // Function to populate the courses based on the selected department
+    function populateCourses() {
+      var department = document.getElementById("department").value;
+      var courseSelect = document.getElementById("course");
+      courseSelect.innerHTML = "";
+
+      if (department === "commerce") {
+        var courses = ["BBA", "BCom", "MCom"];
+      } else if (department === "science") {
+        var courses = ["BSc", "MSc", "PhD"];
+      } else if (department === "arts") {
+        var courses = ["BA", "MA", "PhD"];
+      }
+
+      for (var i = 0; i < courses.length; i++) {
+        var option = document.createElement("option");
+        option.value = courses[i];
+        option.text = courses[i];
+        courseSelect.appendChild(option);
+      }
+    }
+  </script>
+
+</head>
+<body>
+    <h1>Welcome</h1>
+    <button class="blue-button" onclick="showForm()">Click me</button>
+
+    <div class="form-container" id="myForm">
+        <h2>Form</h2>
+<form action="new" method="post">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name" required><br>
+        <input type="date" name="dob" placeholder="Date of Birth" required><br>
+        <input type="number" name="age" placeholder="Age" required><br>
+        <select name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select><br>
+        <input type="tel" name="phone" placeholder="Phone Number" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <textarea name="address" placeholder="Address" required></textarea><br>
+<!--    <label for="department">Department:</label>-->
+    <select id="department" onchange="populateCourses()" required>
+      <option value="">Select Department</option>
+      <option value="commerce">Commerce</option>
+      <option value="science">Science</option>
+      <option value="arts">Arts</option>
+    </select><br>
+
+    <label for="course">Course:</label>
+    <select id="course" required>
+      <option value="">Select Course</option>
+    </select><br>
+        <select name="purpose" required>
+            <option value="">Select Purpose</option>
+            <option value="enquiry">Enquiry</option>
+            <option value="place_order">Place Order</option>
+            <option value="return">Return</option>
+        </select><br>
+        <label>Materials Provided:</label><br>
+        <input type="checkbox" name="materials" value="notebook">
+        <label for="notebook">Debit Note Book</label><br>
+        <input type="checkbox" name="materials" value="pen">
+        <label for="pen">Pen</label><br>
+        <input type="checkbox" name="materials" value="exam_papers">
+        <label for="exam_papers">Exam Papers</label><br>
+
+
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+
+
+
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <a href="/">Return to Home</a>
+</body>
+</html>
